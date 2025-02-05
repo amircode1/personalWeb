@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* RTL Support */
+  html[dir="rtl"] {
+    font-family: 'Vazirmatn', sans-serif;
+  }
+
+  html[dir="ltr"] {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Add custom styles here if needed */
+
