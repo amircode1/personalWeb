@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaFolderOpen } from 'react-icons/fa';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
+import project3 from '../assets/project3.png';
 
 const projects = [
   {
@@ -31,14 +32,14 @@ const projects = [
   },
   {
     id: 3,
-    title: 'My Philosophical World',
-    description: 'React & Tailwind CSS Game',
-    image: '/project3.jpg',
-    tags: ['game', 'Tailwind CSS', 'javascript', 'React'],
+    title: 'ChatBot AI',
+    description: 'React & Next.js',
+    image: project3,
+    tags: ['ChatBot', 'Tailwind CSS', 'javascript', 'React', 'Next.js'],
     category: 'Frontend',
     links: {
-      github: 'https://github.com/username/project3',
-      live: 'https://project3.com'
+      github: 'https://github.com/amircode1/chat-ai',
+      live: 'https://chat-ai-amir.netlify.app/'
     }
   }
 ];
