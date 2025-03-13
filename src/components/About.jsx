@@ -7,6 +7,11 @@ const About = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
 
+  // Get resume file based on language
+  const getResumeFile = () => {
+    return i18n.language === 'fa' ? '/امیرمحمد رضایی.pdf' : '/amirmohammadrezaei.pdf';
+  };
+
   const stats = [
     { label: 'experience', value: '2+' },
     { label: 'projects', value: '5+' },
@@ -100,6 +105,24 @@ const About = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* Add Download Resume Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7 }}
+                className="mt-8"
+              >
+                <a
+                  href={getResumeFile()}
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-light text-text-light rounded-lg font-medium transition-colors"
+                >
+                  <FaDownload />
+                  {t('about.downloadCV')}
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
