@@ -9,7 +9,7 @@ const About = () => {
 
   // Get resume file based on language
   const getResumeFile = () => {
-    return i18n.language === 'fa' ? '/امیرمحمد رضایی.pdf' : '/amirmohammadrezaei.pdf';
+    return i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf';
   };
 
   const stats = [
