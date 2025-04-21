@@ -4,6 +4,7 @@ import { FaGithub, FaExternalLinkAlt, FaFolderOpen } from 'react-icons/fa';
 import project1 from '../assets/project1.png';
 import project2 from '../assets/project2.png';
 import project3 from '../assets/project3.png';
+import project4 from '../assets/project4.png';
 
 const projects = [
   {
@@ -40,6 +41,18 @@ const projects = [
     links: {
       github: 'https://github.com/amircode1/chat-ai',
       live: 'https://chat-ai-amir.netlify.app/'
+    }
+  },
+  {
+    id: 4,
+    title: 'Car 3D Web',
+    description: 'Three.js & React 3D Application',
+    image: project4,
+    tags: ['Three.js', 'React', 'Javascript', '3D', 'WebGL'],
+    category: 'Frontend',
+    links: {
+      github: 'https://github.com/amircode1/car-3d',
+      live: 'https://car-3dweb.netlify.app/'
     }
   }
 ];

@@ -1,8 +1,80 @@
-# React + Vite
+# وب‌سایت شخصی نمونه کارها
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![وب‌سایت شخصی](https://amirmohammadrezaei.netlify.app/)
 
-Currently, two official plugins are available:
+## معرفی
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+این پروژه یک وب‌سایت شخصی واکنش‌گرا و مدرن است که با استفاده از فناوری‌های React و Tailwind CSS ساخته شده است. این وب‌سایت نمونه کارهای حرفه‌ای، مهارت‌ها و اطلاعات تماس را به صورت زیبا و کاربرپسند نمایش می‌دهد.
+
+## ویژگی‌ها
+
+- طراحی واکنش‌گرا و سازگار با دستگاه‌های مختلف
+- پشتیبانی از چند زبان (فارسی و انگلیسی) با i18next
+- انیمیشن‌های جذاب با Framer Motion
+- نمایشگر پورتفولیو با قابلیت فیلتر کردن پروژه‌ها
+- فرم تماس با EmailJS
+- بهینه‌سازی SEO
+- سازگار با قوانین PWA
+- تم دارک مدرن و زیبا
+
+## نمونه کارها
+
+این وب‌سایت شامل نمونه کارهای متنوعی است:
+
+1. **Game Store**: فروشگاه بازی ساخته شده با React و TypeScript
+2. **Crypto Way**: داشبورد ارزهای دیجیتال با React و Redux
+3. **ChatBot AI**: چت‌بات هوشمند ساخته شده با Next.js
+4. **Car 3D Web**: نمایش سه‌بعدی ماشین با Three.js و React
+
+## فناوری‌های استفاده شده
+
+- **React**: کتابخانه جاوا‌اسکریپت برای ساخت رابط کاربری
+- **Tailwind CSS**: فریم‌ورک CSS برای طراحی رابط کاربری
+- **Framer Motion**: کتابخانه انیمیشن برای React
+- **i18next**: کتابخانه بین‌المللی‌سازی (i18n) برای چند زبانه کردن برنامه
+- **EmailJS**: سرویس ارسال ایمیل بدون نیاز به سرور
+- **React Icons**: مجموعه‌ای از آیکون‌های محبوب برای React
+- **Vite**: ابزار توسعه مدرن و سریع برای React
+
+## نصب و راه‌اندازی
+
+برای راه‌اندازی پروژه در محیط توسعه محلی خود، دستورات زیر را اجرا کنید:
+
+```bash
+# کلون کردن مخزن
+git clone https://github.com/your-username/personalweb.git
+
+# وارد شدن به پوشه پروژه
+cd personalweb
+
+# نصب وابستگی‌ها
+npm install
+
+# اجرای برنامه در محیط توسعه
+npm run dev
+```
+
+سپس برنامه در آدرس `http://localhost:5173` قابل دسترس خواهد بود.
+
+## دستورات مفید
+
+- `npm run dev`: اجرای برنامه در محیط توسعه
+- `npm run build`: ساخت نسخه نهایی برای انتشار
+- `npm run preview`: پیش‌نمایش نسخه ساخته شده
+- `npm run lint`: بررسی کد با ESLint
+
+## بهینه‌سازی
+
+این پروژه برای عملکرد و سرعت بهینه‌سازی شده است:
+
+- استفاده از lazy loading برای تصاویر
+- کد‌های تقسیم‌شده (code splitting) برای بارگذاری سریع‌تر
+- استفاده از کش‌کردن و تکنیک‌های مدرن وب
+
+## مجوز
+
+این پروژه تحت مجوز MIT منتشر شده است. برای اطلاعات بیشتر به فایل LICENSE مراجعه کنید.
+
+## تماس
+
+برای سوالات یا همکاری، می‌توانید از طریق وب‌سایت یا ایمیل با من در ارتباط باشید.
