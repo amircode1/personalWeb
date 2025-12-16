@@ -116,31 +116,31 @@ const Contact = () => {
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-8"
+              className="space-y-4 md:space-y-8"
             >
-              <div className="space-y-6">
+              <div className="space-y-3 md:space-y-6">
                 {contactInfo.map((info) => (
                   <motion.a
                     key={info.title}
                     href={info.href}
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-accent/5 backdrop-blur-sm hover:bg-accent/10 transition-colors"
+                    className="flex w-full items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-accent/5 backdrop-blur-sm hover:bg-accent/10 transition-colors"
                   >
-                    <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent">
-                      {info.icon}
+                    <div className="w-10 md:w-12 h-10 md:h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent flex-shrink-0">
+                      <span className="text-lg md:text-2xl">{info.icon.props.children}</span>
                     </div>
-                    <div>
-                      <h3 className="text-text-light font-medium">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-text-light font-medium text-sm md:text-base">
                         {t(`contact.${info.title}`)}
                       </h3>
-                      <p className="text-text-light/80">{info.value}</p>
+                      <p className="text-text-light/80 text-xs md:text-sm break-words">{info.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -154,9 +154,9 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div>
-                  <label htmlFor="from_name" className="block text-text-light mb-2">
+                  <label htmlFor="from_name" className="block text-text-light mb-2 text-sm md:text-base">
                     {t('contact.form.name')}
                   </label>
                   <input
@@ -165,12 +165,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50 text-sm md:text-base"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="to_email" className="block text-text-light mb-2">
+                  <label htmlFor="to_email" className="block text-text-light mb-2 text-sm md:text-base">
                     {t('contact.form.email')}
                   </label>
                   <input
@@ -179,12 +179,12 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50 text-sm md:text-base"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-text-light mb-2">
+                  <label htmlFor="message" className="block text-text-light mb-2 text-sm md:text-base">
                     {t('contact.form.message')}
                   </label>
                   <textarea
@@ -193,14 +193,14 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 bg-accent/5 rounded-lg text-text-light placeholder-text-light/50 text-sm md:text-base"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending}
-                  className="w-full px-8 py-4 bg-accent text-text-light rounded-lg"
+                  className="w-full px-6 md:px-8 py-3 md:py-4 bg-accent text-text-light rounded-lg text-sm md:text-base font-medium"
                 >
                   {isSending ? t('contact.form.sending') : t('contact.form.submit')}
                 </button>
