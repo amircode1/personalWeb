@@ -1,13 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa';
+import { useState } from 'react';
 import profile from '../assets/profile.jpg';
+import music from '../assets/Doors_Light_Funk_slowed_-_Dj_Vttt77_Dj_Vyz.mp3';
+import MusicVisualizer from './MusicVisualizer';
 
 const About = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
-
-  // Get resume file based on language
+  const [amplitude, setAmplitude] = useState(0);
+  
   const getResumeFile = () => {
     return i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf';
   };
@@ -19,9 +22,9 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-dark relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-64 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl" />
-      
+      {/* Full-section music visualizer background */}
+      <MusicVisualizer src={music} onAmplitudeChange={setAmplitude} fillParent accentColor="#06B6D4" />
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
@@ -47,6 +50,8 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-bold text-text-light"
+              animate={{ scale: 1 + amplitude / 70 }}
+              transition={{ type: 'spring', damping: 10, stiffness: 100 }}
             >
               {t('about.title')}
             </motion.h2>
@@ -58,7 +63,17 @@ const About = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              animate={{ 
+                rotate: Math.sin(amplitude / 50) * 3,
+                scale: 1 + (amplitude / 200)
+              }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.2,
+                type: 'spring', 
+                damping: 15, 
+                stiffness: 100 
+              }}
               className="relative group"
             >
               <div className="relative z-10 rounded-2xl overflow-hidden">
@@ -67,10 +82,7 @@ const About = () => {
                   alt="Profile"
                   className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-accent/20 mix-blend-overlay" />
               </div>
-              {/* Decorative Elements */}
-              <div className="absolute -inset-4 bg-accent/20 rounded-2xl blur-lg -z-10 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
             </motion.div>
 
             {/* Content */}
@@ -94,7 +106,7 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.6 + index * 0.1 }}
-                    className="text-center p-4 rounded-xl bg-accent/5 backdrop-blur-sm"
+                    className="text-center p-4 rounded-xl"
                   >
                     <div className="text-3xl font-bold text-accent mb-1">
                       {stat.value}
@@ -106,12 +118,14 @@ const About = () => {
                 ))}
               </div>
 
+              <div className="my-8" />
+
               {/* Add Download Resume Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.7 }}
+                transition={{ delay: 0.8 }}
                 className="mt-8"
               >
                 <a
