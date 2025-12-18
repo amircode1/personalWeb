@@ -47,21 +47,20 @@ const MusicVisualizer = ({ src, onAmplitudeChange, fillParent = false, accentCol
     }
   };
 
-  // Handle mouse move to start music
+  // Listen for strong user gestures to start music (pointerdown, touchstart, click, keydown)
   useEffect(() => {
     if (isPlaying) return;
 
-    const handleMouseMove = () => {
+    const startHandler = (e) => {
       startMusic();
-      // Remove listener after first move
-      document.removeEventListener('mousemove', handleMouseMove);
+      // remove all listeners after first accepted gesture
+      events.forEach((ev) => document.removeEventListener(ev, startHandler));
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
+    const events = ['pointerdown', 'touchstart', 'click', 'keydown'];
+    events.forEach((ev) => document.addEventListener(ev, startHandler, { passive: true }));
 
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => events.forEach((ev) => document.removeEventListener(ev, startHandler));
   }, [isPlaying]);
 
   const initializeAudio = () => {
@@ -256,7 +255,7 @@ const MusicVisualizer = ({ src, onAmplitudeChange, fillParent = false, accentCol
           pointerEvents: 'none',
           zIndex: 10,
         }}>
-          Move your mouse to play ♪
+          Tap/click or press any key to play ♪
         </div>
       )}
       <canvas ref={canvasRef} style={{ width: '100%', height: '100%', pointerEvents: 'none', display: 'block' }} />

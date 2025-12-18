@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaTelegram, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -22,20 +22,17 @@ const Contact = () => {
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: 'email',
-      value: 'amirmohammadrezaeiwork@gmail.com',
-      href: 'mailto:example@email.com'
+      value: 'amirmohammadrezaeiwork@gmail.com'
     },
     {
-      icon: <FaPhone className="text-2xl" />,
-      title: 'phone',
-      value: '+1 234 567 890',
-      href: 'tel:@Amirmohammadrezaei1'
+      icon: <FaTelegram className="text-2xl" />,
+      title: 'telegram',
+      value: '@Amirmohammadrezaei1'
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: 'location',
-      value: 'remote',
-      href: '#'
+      value: 'remote'
     }
   ];
 
@@ -127,22 +124,21 @@ const Contact = () => {
             >
               <div className="space-y-3 md:space-y-6">
                 {contactInfo.map((info) => (
-                  <motion.a
+                  <motion.div
                     key={info.title}
-                    href={info.href}
                     whileHover={{ scale: 1.02 }}
-                    className="flex w-full items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-accent/5 backdrop-blur-sm hover:bg-accent/10 transition-colors"
+                    className="flex w-full items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-accent/5 backdrop-blur-sm hover:bg-accent/10 transition-colors cursor-default"
                   >
                     <div className="w-10 md:w-12 h-10 md:h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent flex-shrink-0">
-                      <span className="text-lg md:text-2xl">{info.icon.props.children}</span>
+                      {info.icon}
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="text-text-light font-medium text-sm md:text-base">
-                        {t(`contact.${info.title}`)}
+                        {t(info.title)}
                       </h3>
                       <p className="text-text-light/80 text-xs md:text-sm break-words">{info.value}</p>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
