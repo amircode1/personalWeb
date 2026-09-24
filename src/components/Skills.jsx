@@ -1,142 +1,90 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { 
-  FaReact, 
-  FaGit, 
-  FaNpm,
-} from 'react-icons/fa';
-import { 
-  SiRedux, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiVite, 
+import {
+  SiGithub,
   SiJavascript,
-  SiReactquery,
   SiReact,
-  SiGithub
+  SiReactquery,
+  SiRedux,
+  SiTailwindcss,
 } from 'react-icons/si';
+
+const skills = [
+  { name: 'React', icon: <SiReact aria-hidden="true" />, level: 92, tone: 'text-accent' },
+  { name: 'Redux', icon: <SiRedux aria-hidden="true" />, level: 84, tone: 'text-violet-light' },
+  { name: 'React Query', icon: <SiReactquery aria-hidden="true" />, level: 82, tone: 'text-accent' },
+  { name: 'GitHub', icon: <SiGithub aria-hidden="true" />, level: 88, tone: 'text-text-light' },
+  { name: 'JavaScript', icon: <SiJavascript aria-hidden="true" />, level: 90, tone: 'text-gold-light' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss aria-hidden="true" />, level: 94, tone: 'text-accent-light' },
+];
 
 const Skills = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
 
-  const skills = [
-    { 
-      name: 'React', 
-      icon: <SiReact />,
-      color: 'text-accent hover:text-accent-light'
-    },
-    { 
-      name: 'Redux', 
-      icon: <SiRedux />,
-      color: 'text-accent hover:text-accent-light'
-    },
-    { 
-      name: 'React Query', 
-      icon: <SiReactquery />,
-      color: 'text-accent hover:text-accent-light'
-    },
-    { 
-      name: 'github', 
-      icon: <SiGithub />,
-      color: 'text-accent hover:text-accent-light'
-    },
-    { 
-      name: 'JavaScript', 
-      icon: <SiJavascript />,
-      color: 'text-accent hover:text-accent-light'
-    },
-    { 
-      name: 'Tailwind CSS', 
-      icon: <SiTailwindcss />,
-      color: 'text-accent hover:text-accent-light'
-    }
-  ];
-
   return (
-    <section id="skills" className="py-20 bg-dark relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 -left-64 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-64 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl" />
-      </div>
+    <section id="skills" className="section-shell relative overflow-hidden border-b border-white/[0.08] bg-void py-20 sm:py-24 md:py-32">
+      <div className="pointer-events-none absolute inset-0 cyber-grid opacity-20" />
+      <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between"
+        >
+          <div className={isRTL ? 'text-right' : 'text-left'}>
+            <div className="section-kicker mb-5">{t('skills.subtitle')}</div>
+            <h2 className="section-title max-w-2xl">{t('skills.title')}</h2>
+          </div>
+          <p className={`section-copy max-w-md ${isRTL ? 'text-right' : 'text-left'}`}>{t('skills.description')}</p>
+        </motion.div>
 
-      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((skill, index) => (
+            <motion.article
+              key={skill.name}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: index * 0.07, duration: 0.45 }}
+              whileHover={{ y: -5 }}
+              className="skill-card group rounded-lg p-5 sm:p-6"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-2xl transition group-hover:border-accent/40 ${skill.tone}`}>
+                  {skill.icon}
+                </div>
+                <span className="data-label text-text-dark">0{index + 1} / CORE</span>
+              </div>
+              <div className={`mt-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+                <h3 className="font-display text-lg font-bold text-text-light">{skill.name}</h3>
+                <div className="mt-5 flex items-center justify-between gap-3">
+                  <span className="data-label">{t('skills.proficiency')}</span>
+                  <span className={`font-display text-sm font-bold ${skill.tone}`}>{skill.level}%</span>
+                </div>
+                <div className="mt-3 h-1 overflow-hidden rounded-full bg-white/[0.08]">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.25 + index * 0.07, duration: 0.8, ease: 'easeOut' }}
+                    className={`h-full rounded-full bg-current ${skill.tone} shadow-[0_0_12px_currentColor]`}
+                  />
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-6xl mx-auto"
+          transition={{ delay: 0.45 }}
+          className={`mt-12 border-t border-white/[0.08] pt-5 ${isRTL ? 'text-right' : 'text-left'}`}
         >
-          {/* Section Title */}
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-block bg-accent/10 px-6 py-2 rounded-full mb-4"
-            >
-              <span className="text-accent font-medium">
-                {t('skills.subtitle')}
-              </span>
-            </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-text-light mb-6"
-            >
-              {t('skills.title')}
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-text-light max-w-2xl mx-auto leading-relaxed"
-            >
-              {t('skills.description')}
-            </motion.p>
-          </div>
-
-          {/* Skills Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group relative bg-accent/5 backdrop-blur-sm p-8 rounded-2xl hover:bg-accent/10 transition-all duration-300"
-              >
-                <div className="flex flex-col items-center gap-4">
-                  <div className={`text-5xl ${skill.color} transition-colors duration-300`}>
-                    {skill.icon}
-                  </div>
-                  <h3 className="text-text-light font-medium text-lg text-center">
-                    {skill.name}
-                  </h3>
-                </div>
-                {/* Hover Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Additional Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="text-center mt-16"
-          >
-            <p className="text-text-light leading-relaxed">
-              {t('skills.additionalInfo')}
-            </p>
-          </motion.div>
+          <p className="section-copy text-sm">{t('skills.additionalInfo')}</p>
         </motion.div>
       </div>
     </section>

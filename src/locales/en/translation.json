@@ -1,64 +1,105 @@
 {
     "nav": {
+      "ariaLabel": "Primary navigation",
+      "brandRole": "Frontend developer",
       "home": "Home",
       "about": "About",
       "skills": "Skills",
-      "portfolio": "Portfolio",
-      "contact": "Contact"
+      "portfolio": "Work",
+      "contact": "Contact",
+      "language": "Language",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
     },
     "hero": {
-      "greeting": "👋 Hi there, Welcome",
-      "name": "I'm Amirmohammad Rezaei",
-      "title": "Frontend Developer",
-      "description": "I'm a frontend developer experienced in building modern and responsive web applications",
-      "contactButton": "Contact Me",
-      "downloadCV": "Download CV"
+      "eyebrow": "Independent digital builder",
+      "systemLabel": "AMIRMOHAMMAD REZAEI / FRONTEND DEVELOPER",
+      "greeting": "Hi there, welcome",
+      "name": "Amirmohammad Rezaei",
+      "title": "Interfaces from the dark side of the web.",
+      "description": "I build modern, responsive web experiences where precise interaction design meets clean React architecture.",
+      "contactButton": "Start a conversation",
+      "downloadCV": "Download CV",
+      "status": "Available for select projects",
+      "location": "Remote / Iran",
+      "socialLabel": "Social profiles",
+      "imageAlt": "Portrait of Amirmohammad Rezaei",
+      "imageLabel": "Profile signal",
+      "stack": "Preferred stack",
+      "scroll": "Explore the signal"
     },
     "about": {
-      "subtitle": "About Me",
-      "title": "Get to Know Me Better",
-      "description": "I'm a frontend developer with 2 years of experience in creating engaging and user-friendly interfaces. My expertise lies in Next.js, React and its ecosystem.",
+      "subtitle": "About me",
+      "title": "Human detail. System-level thinking.",
+      "description": "A frontend developer focused on turning complex ideas into clear digital products.",
+      "profileLabel": "Identity confirmed",
+      "available": "OPEN TO WORK",
+      "focus": "Current focus",
+      "longDescription": "I am a frontend developer with 2 years of experience crafting engaging, user-friendly interfaces. My work lives at the intersection of React, Next.js, thoughtful visual systems and performance-minded engineering.",
       "stats": {
-        "experience": "Years Experience",
-        "projects": "Projects Done",
-        "clients": "Happy Clients"
+        "experience": "Years experience",
+        "projects": "Projects shipped",
+        "clients": "Happy clients"
       },
-      "downloadCV": "Download CV"
+      "downloadCV": "Download resume",
+      "resumeNote": "PDF / EN · FA",
+      "audioLabel": "Ambient channel",
+      "audioTitle": "A little signal while you browse",
+      "signal": "Signal",
+      "playAudio": "Play ambient audio",
+      "pauseAudio": "Pause ambient audio"
     },
     "skills": {
-      "subtitle": "My Skills",
-      "title": "My Expertise",
-      "description": "I specialize in a wide range of modern web technologies",
-      "additionalInfo": "I'm also familiar with modern development tools like Git, Webpack, and Docker"
+      "subtitle": "Core skills",
+      "title": "The toolkit behind the interface.",
+      "description": "A focused set of tools for building fast, expressive and maintainable frontend systems.",
+      "proficiency": "Proficiency",
+      "additionalInfo": "Also comfortable with Git, Webpack, Docker and the broader modern frontend ecosystem."
     },
     "portfolio": {
-      "subtitle": "Portfolio",
-      "title": "My Latest Projects",
-      "description": "Take a look at some of my recent projects"
+      "subtitle": "Selected work",
+      "title": "Recent transmissions.",
+      "description": "A selection of experiments and products built with modern frontend technologies.",
+      "category": "Frontend",
+      "viewCode": "View source code",
+      "viewLive": "Open live project"
     },
     "contact": {
-      "subtitle": "Contact Me",
-      "title": "Let's Get in Touch",
-      "description": "Feel free to contact me for collaboration or any questions",
+      "subtitle": "Contact",
+      "title": "Have a signal to send?",
+      "description": "Tell me what you are building and I will get back to you as soon as possible.",
       "email": "Email",
+      "telegram": "Telegram",
+      "remote": "Remote / Iran",
       "phone": "",
       "location": "Location",
+      "signalLabel": "Open channel",
+      "availability": "Available for collaboration",
+      "availabilityDescription": "Whether you have a product idea, a frontend challenge or a design system that needs a technical home, send the brief through the channel.",
+      "directEmail": "Send a direct email",
       "form": {
-        "name": "Your Name",
+        "name": "Your name",
         "namePlaceholder": "Enter your name",
-        "email": "Your Email",
-        "emailPlaceholder": "Enter your email",
-        "message": "Your Message",
-        "messagePlaceholder": "Write your message",
+        "email": "Your email",
+        "emailPlaceholder": "you@example.com",
+        "message": "Your message",
+        "messagePlaceholder": "Tell me about the project...",
         "sending": "Sending...",
-        "submit": "Send Message"
+        "submit": "Transmit message",
+        "successMessage": "Message sent successfully.",
+        "errorMessage": "The message could not be sent. Please try again or use email directly."
       }
     },
     "footer": {
-      "description": "Frontend developer focused on creating exceptional user experiences",
-      "quickLinks": "Quick Links",
-      "followMe": "Follow Me",
+      "description": "Frontend developer focused on creating exceptional user experiences with a sharp visual point of view.",
+      "systemNote": "Built with React / shipped with intent",
+      "quickLinks": "Navigate",
+      "followMe": "Find me online",
       "copyright": "All rights reserved",
-      "madeWith": "Made with"
+      "madeWith": "Made with",
+      "forTheWeb": "for the web"
+    },
+    "common": {
+      "scrollTop": "Scroll to top"
     }
   }

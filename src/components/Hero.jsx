@@ -1,115 +1,144 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaTelegram } from 'react-icons/fa';
+import {
+  FaArrowDown,
+  FaDownload,
+  FaGithub,
+  FaLinkedin,
+  FaPaperPlane,
+  FaTelegram,
+} from 'react-icons/fa';
+import profile from '../assets/profile.jpg';
+
+const socialLinks = [
+  { name: 'GitHub', icon: <FaGithub aria-hidden="true" />, href: 'https://github.com/amircode1' },
+  { name: 'LinkedIn', icon: <FaLinkedin aria-hidden="true" />, href: 'https://linkedin.com/in/youruser' },
+  { name: 'Telegram', icon: <FaTelegram aria-hidden="true" />, href: 'https://t.me/Amirmohammadrezaei1' },
+];
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
 
-  const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com/amircode1' },
-    { icon: <FaLinkedin />, href: 'https://linkedin.com/in/youruser' },
-    { icon: <FaTelegram />, href: 'https://t.me/Amirmohammadrezaei1' }
-  ];
+  const getResumeFile = () => (i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf');
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-dark">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-accent/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-accent/20 rounded-full blur-3xl" />
-      </div>
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden border-b border-white/[0.08] bg-void pt-32 pb-16">
+      <div className="pointer-events-none absolute inset-0 cyber-grid opacity-70" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent/35" />
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-white/[0.04] lg:block" />
+      <div className="pointer-events-none absolute bottom-10 left-0 h-px w-1/3 bg-violet/40" />
+      <div className="pointer-events-none absolute right-0 top-32 h-px w-1/4 bg-magenta/40" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container relative z-10 mx-auto w-full max-w-7xl px-6 md:px-10">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={`text-center ${isRTL ? 'md:text-right' : 'md:text-left'}`}
+            initial={{ opacity: 0, x: isRTL ? 35 : -35 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className={`max-w-3xl ${isRTL ? 'text-right' : 'text-left'}`}
           >
-            {/* Greeting */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block bg-accent/10 px-6 py-2 rounded-full mb-6"
-            >
-              <span className="text-accent font-medium">
-                {t('hero.greeting')}
-              </span>
-            </motion.div>
+            <div className="section-kicker mb-7">{t('hero.eyebrow')}</div>
 
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl font-bold text-text-light mb-4"
-            >
+            <p className="data-label mb-4 text-accent/70">{t('hero.systemLabel')}</p>
+            <h1 className="max-w-3xl font-display text-5xl font-bold leading-[1.08] text-text-light sm:text-6xl lg:text-7xl">
               {t('hero.name')}
-            </motion.h1>
-
-            {/* Title */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-2xl md:text-4xl text-text-light mb-6"
-            >
+            </h1>
+            <h2 className="mt-5 font-display text-2xl font-semibold leading-tight text-gradient sm:text-3xl lg:text-4xl">
               {t('hero.title')}
-            </motion.h2>
+            </h2>
+            <p className="section-copy mt-7 max-w-2xl text-base md:text-lg">{t('hero.description')}</p>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-text-light max-w-2xl mx-auto md:mx-0 mb-8 leading-relaxed"
-            >
-              {t('hero.description')}
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 rtl:space-x-reverse"
-            >
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-accent hover:bg-accent-light text-text-light rounded-lg font-medium transition-colors w-full sm:w-auto text-center"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="neon-button w-full sm:w-auto"
               >
-                {t('hero.contactButton')}
+                <FaPaperPlane aria-hidden="true" />
+                <span>{t('hero.contactButton')}</span>
               </motion.a>
-            </motion.div>
+              <motion.a
+                href={getResumeFile()}
+                download
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="ghost-button w-full sm:w-auto"
+              >
+                <FaDownload aria-hidden="true" />
+                <span>{t('hero.downloadCV')}</span>
+              </motion.a>
+            </div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex items-center justify-center md:justify-start space-x-6 rtl:space-x-reverse mt-8"
-            >
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-text-light hover:text-accent transition-colors text-2xl"
-                >
-                  {link.icon}
-                </motion.a>
-              ))}
-            </motion.div>
+            <div className="mt-10 flex flex-col gap-5 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text/70">
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(34,211,238,0.9)]" aria-hidden="true" />
+                  {t('hero.status')}
+                </span>
+                <span className="text-text/45">{t('hero.location')}</span>
+              </div>
+              <div className="flex items-center gap-3" aria-label={t('hero.socialLabel')}>
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={link.name}
+                    aria-label={link.name}
+                    className="social-icon"
+                  >
+                    {link.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: isRTL ? -35 : 35, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
+            className={`relative mx-auto w-full max-w-[25rem] ${isRTL ? 'lg:ml-0' : 'lg:mr-0'}`}
+          >
+            <div className="pointer-events-none absolute -inset-5 border border-violet/20 [clip-path:polygon(0_14%,14%_0,86%_0,100%_14%,100%_86%,86%_100%,14%_100%,0_86%)]" />
+            <div className="pointer-events-none absolute -right-5 top-12 h-20 w-px bg-accent/60" />
+            <div className="pointer-events-none absolute -left-5 bottom-16 h-28 w-px bg-magenta/60" />
+
+            <figure className="profile-frame relative overflow-hidden rounded-lg p-2">
+              <div className="relative overflow-hidden rounded-md bg-panel" style={{ clipPath: 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%)' }}>
+                <img
+                  src={profile}
+                  alt={t('hero.imageAlt')}
+                  className="aspect-[3/4] w-full object-cover object-[center_28%]"
+                />
+                <div className="pointer-events-none absolute inset-0 border border-white/10" />
+              </div>
+              <figcaption className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-3 rounded-md border border-white/15 bg-void/80 px-3 py-2 backdrop-blur-md">
+                <span className="data-label text-text-light/80">{t('hero.imageLabel')}</span>
+                <span className="font-display text-xs font-bold text-accent">AMR_01</span>
+              </figcaption>
+            </figure>
+
+            <div className="mt-5 flex items-center justify-between gap-4 px-1">
+              <span className="data-label">{t('hero.stack')}</span>
+              <span className="font-display text-xs font-bold text-violet-light">REACT / NEXT / UI</span>
+            </div>
           </motion.div>
         </div>
+
+        <motion.a
+          href="#about"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.5 }}
+          className={`mt-12 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-text/50 transition hover:text-accent sm:mt-16 ${isRTL ? 'justify-start' : 'justify-start'}`}
+        >
+          <span>{t('hero.scroll')}</span>
+          <FaArrowDown aria-hidden="true" className="text-accent" />
+        </motion.a>
       </div>
     </section>
   );
