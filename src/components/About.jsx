@@ -2,14 +2,21 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { FaDownload, FaFingerprint, FaLayerGroup } from 'react-icons/fa';
-import profile from '../assets/profile.jpg';
+import coldPortrait from '../assets/portrait-cold.png';
+import studioPortrait from '../assets/profile.jpg';
 import music from '../assets/Doors_Light_Funk_slowed_-_Dj_Vttt77_Dj_Vyz.mp3';
 import MusicVisualizer from './MusicVisualizer';
+import { useTheme } from '../theme/ThemeContext';
 
 const About = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
   const [amplitude, setAmplitude] = useState(0);
+  const { palette, activeThemeId } = useTheme();
+
+  // The About portrait follows the gallery so the whole site reads as one image.
+  const portrait = activeThemeId === 'cold' ? coldPortrait : studioPortrait;
+  const portraitAlt = activeThemeId === 'cold' ? t('gallery.items.cold.title') : t('hero.imageAlt');
 
   const getResumeFile = () => (i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf');
 
@@ -34,6 +41,10 @@ const About = () => {
           <div className={isRTL ? 'text-right' : 'text-left'}>
             <div className="section-kicker mb-5">{t('about.subtitle')}</div>
             <h2 className="section-title max-w-2xl">{t('about.title')}</h2>
+            <div className="hud-tag mt-4">
+              <span className="hud-tag__index">01</span>
+              <span>{t('about.hudTag')}</span>
+            </div>
           </div>
           <p className={`section-copy max-w-md ${isRTL ? 'text-right' : 'text-left'}`}>{t('about.description')}</p>
         </motion.div>
@@ -49,11 +60,11 @@ const About = () => {
             <div className="pointer-events-none absolute -inset-4 rounded-lg border border-violet/25" />
             <div className="pointer-events-none absolute -right-7 top-12 h-24 w-px bg-accent/70" />
             <div className="pointer-events-none absolute -left-7 bottom-20 h-16 w-px bg-magenta/70" />
-            <figure className="profile-frame overflow-hidden rounded-lg p-2">
+            <figure className="profile-frame hud-frame overflow-hidden rounded-lg p-2">
               <div className="relative overflow-hidden rounded-md bg-panel">
                 <img
-                  src={profile}
-                  alt={t('hero.imageAlt')}
+                  src={portrait}
+                  alt={portraitAlt}
                   className="aspect-[4/5] w-full object-cover object-[center_28%]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
@@ -125,7 +136,7 @@ const About = () => {
               <MusicVisualizer
                 src={music}
                 onAmplitudeChange={setAmplitude}
-                accentColor="#22d3ee"
+                accentColor={palette.accent}
                 playLabel={t('about.playAudio')}
                 pauseLabel={t('about.pauseAudio')}
               />
@@ -138,3 +149,5 @@ const About = () => {
 };
 
 export default About;
+
+

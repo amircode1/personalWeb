@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import {
@@ -8,7 +9,12 @@ import {
   FaPaperPlane,
   FaTelegram,
 } from 'react-icons/fa';
-import profile from '../assets/profile.jpg';
+
+import Gallery from './gallery/Gallery';
+import BootLog from './effects/BootLog';
+import GlitchText from './effects/GlitchText';
+import studioPortrait from '../assets/profile.jpg';
+import coldPortrait from '../assets/portrait-cold.png';
 
 const socialLinks = [
   { name: 'GitHub', icon: <FaGithub aria-hidden="true" />, href: 'https://github.com/amircode1' },
@@ -20,10 +26,51 @@ const Hero = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'fa';
 
-  const getResumeFile = () => (i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf');
+  const galleryItems = useMemo(
+    () => [
+      {
+        id: 'studio',
+        themeId: 'studio',
+        image: studioPortrait,
+        alt: t('hero.imageAlt'),
+        kicker: t('gallery.kicker', { index: 1 }),
+        title: t('gallery.items.studio.title'),
+        meta: t('gallery.items.studio.meta'),
+        objectPosition: 'center 24%',
+      },
+      {
+        id: 'cold',
+        themeId: 'cold',
+        image: coldPortrait,
+        alt: t('gallery.items.cold.title'),
+        kicker: t('gallery.kicker', { index: 2 }),
+        title: t('gallery.items.cold.title'),
+        meta: t('gallery.items.cold.meta'),
+        objectPosition: 'center 18%',
+      },
+    ],
+    [t],
+  );
+
+  const galleryLabels = useMemo(
+    () => ({
+      expand: t('gallery.expand'),
+      close: t('gallery.close'),
+      next: t('gallery.next'),
+      previous: t('gallery.previous'),
+      shiftTheme: t('gallery.shiftTheme'),
+    }),
+    [t],
+  );
+
+  const getResumeFile = () =>
+    i18n.language === 'fa' ? '/امیرمحمدرضایی.pdf' : '/amirmohammadrezaei.pdf';
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden border-b border-white/[0.08] bg-void pt-32 pb-16">
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center overflow-hidden border-b border-white/[0.08] bg-void pt-32 pb-16 transition-colors duration-700"
+    >
       <div className="pointer-events-none absolute inset-0 cyber-grid opacity-70" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-accent/35" />
       <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-white/[0.04] lg:block" />
@@ -42,12 +89,14 @@ const Hero = () => {
 
             <p className="data-label mb-4 text-accent/70">{t('hero.systemLabel')}</p>
             <h1 className="max-w-3xl font-display text-5xl font-bold leading-[1.08] text-text-light sm:text-6xl lg:text-7xl">
-              {t('hero.name')}
+              <GlitchText as="span" text={t('hero.name')} glitchChars={1} />
             </h1>
             <h2 className="mt-5 font-display text-2xl font-semibold leading-tight text-gradient sm:text-3xl lg:text-4xl">
               {t('hero.title')}
             </h2>
             <p className="section-copy mt-7 max-w-2xl text-base md:text-lg">{t('hero.description')}</p>
+
+            <BootLog />
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <motion.a
@@ -74,7 +123,7 @@ const Hero = () => {
             <div className="mt-10 flex flex-col gap-5 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-text/70">
                 <span className="inline-flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(34,211,238,0.9)]" aria-hidden="true" />
+                  <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_currentColor]" aria-hidden="true" />
                   {t('hero.status')}
                 </span>
                 <span className="text-text/45">{t('hero.location')}</span>
@@ -101,31 +150,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: isRTL ? -35 : 35, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
-            className={`relative mx-auto w-full max-w-[25rem] ${isRTL ? 'lg:ml-0' : 'lg:mr-0'}`}
+            className="relative mx-auto w-full max-w-[25rem]"
           >
-            <div className="pointer-events-none absolute -inset-5 border border-violet/20 [clip-path:polygon(0_14%,14%_0,86%_0,100%_14%,100%_86%,86%_100%,14%_100%,0_86%)]" />
-            <div className="pointer-events-none absolute -right-5 top-12 h-20 w-px bg-accent/60" />
-            <div className="pointer-events-none absolute -left-5 bottom-16 h-28 w-px bg-magenta/60" />
-
-            <figure className="profile-frame relative overflow-hidden rounded-lg p-2">
-              <div className="relative overflow-hidden rounded-md bg-panel" style={{ clipPath: 'polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%)' }}>
-                <img
-                  src={profile}
-                  alt={t('hero.imageAlt')}
-                  className="aspect-[3/4] w-full object-cover object-[center_28%]"
-                />
-                <div className="pointer-events-none absolute inset-0 border border-white/10" />
-              </div>
-              <figcaption className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-3 rounded-md border border-white/15 bg-void/80 px-3 py-2 backdrop-blur-md">
-                <span className="data-label text-text-light/80">{t('hero.imageLabel')}</span>
-                <span className="font-display text-xs font-bold text-accent">AMR_01</span>
-              </figcaption>
-            </figure>
-
-            <div className="mt-5 flex items-center justify-between gap-4 px-1">
-              <span className="data-label">{t('hero.stack')}</span>
-              <span className="font-display text-xs font-bold text-violet-light">REACT / NEXT / UI</span>
-            </div>
+            <Gallery items={galleryItems} labels={galleryLabels} />
           </motion.div>
         </div>
 
@@ -134,7 +161,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className={`mt-12 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-text/50 transition hover:text-accent sm:mt-16 ${isRTL ? 'justify-start' : 'justify-start'}`}
+          className="mt-12 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-text/50 transition hover:text-accent sm:mt-16"
         >
           <span>{t('hero.scroll')}</span>
           <FaArrowDown aria-hidden="true" className="text-accent" />
@@ -145,3 +172,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

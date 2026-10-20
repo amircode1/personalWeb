@@ -83,6 +83,10 @@ const Contact = () => {
           <div className={isRTL ? 'text-right' : 'text-left'}>
             <div className="section-kicker mb-5">{t('contact.subtitle')}</div>
             <h2 className="section-title max-w-2xl">{t('contact.title')}</h2>
+            <div className="hud-tag mt-4">
+              <span className="hud-tag__index">04</span>
+              <span>{t('contact.hudTag')}</span>
+            </div>
           </div>
           <p className={`section-copy max-w-md ${isRTL ? 'text-right' : 'text-left'}`}>{t('contact.description')}</p>
         </motion.div>

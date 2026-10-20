@@ -43,6 +43,17 @@ const Navbar = () => {
       }`}
     >
       <div className="nav-shell mx-auto max-w-7xl rounded-lg">
+        <div className="terminal-chrome">
+          <span className="flex items-center gap-2">
+            <span className="terminal-chrome__dots" aria-hidden="true">
+              <span className="terminal-chrome__dot" />
+              <span className="terminal-chrome__dot" />
+              <span className="terminal-chrome__dot" />
+            </span>
+            <span>C:\NODE\AMIR_REZAEI\shell</span>
+          </span>
+          <span className="hidden sm:inline">{t('nav.chromeTitle')}</span>
+        </div>
         <div className="flex min-h-[4.5rem] items-center justify-between gap-4 px-4 md:px-6">
           <a href="#home" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/50 bg-accent/10 font-display text-xs font-bold text-accent shadow-neon">

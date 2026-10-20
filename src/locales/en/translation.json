@@ -9,7 +9,8 @@
       "contact": "Contact",
       "language": "Language",
       "openMenu": "Open menu",
-      "closeMenu": "Close menu"
+      "closeMenu": "Close menu",
+      "chromeTitle": "session: unauthorized"
     },
     "hero": {
       "eyebrow": "Independent digital builder",
@@ -26,12 +27,21 @@
       "imageAlt": "Portrait of Amirmohammad Rezaei",
       "imageLabel": "Profile signal",
       "stack": "Preferred stack",
-      "scroll": "Explore the signal"
+      "scroll": "Explore the signal",
+      "bootLabel": "System boot log",
+      "boot": {
+        "mount": "> mounting /dev/signal0 .................. [ OK ]",
+        "identity": "> verifying operator credentials ....... [ OK ]",
+        "uplink": "> establishing encrypted uplink ........ [ OK ]",
+        "decrypt": "> decrypting session payload ......... [ WARN ]",
+        "ready": "> takeover complete. you are being watched."
+      }
     },
     "about": {
       "subtitle": "About me",
       "title": "Human detail. System-level thinking.",
       "description": "A frontend developer focused on turning complex ideas into clear digital products.",
+      "hudTag": "operator dossier",
       "profileLabel": "Identity confirmed",
       "available": "OPEN TO WORK",
       "focus": "Current focus",
@@ -54,18 +64,21 @@
       "title": "The toolkit behind the interface.",
       "description": "A focused set of tools for building fast, expressive and maintainable frontend systems.",
       "proficiency": "Proficiency",
-      "additionalInfo": "Also comfortable with Git, Webpack, Docker and the broader modern frontend ecosystem."
+      "additionalInfo": "Also comfortable with Git, Webpack, Docker and the broader modern frontend ecosystem.",
+      "hudTag": "module inventory"
     },
     "portfolio": {
       "subtitle": "Selected work",
       "title": "Recent transmissions.",
       "description": "A selection of experiments and products built with modern frontend technologies.",
+      "hudTag": "recovered artefacts",
       "category": "Frontend",
       "viewCode": "View source code",
       "viewLive": "Open live project"
     },
     "contact": {
       "subtitle": "Contact",
+      "hudTag": "open channel",
       "title": "Have a signal to send?",
       "description": "Tell me what you are building and I will get back to you as soon as possible.",
       "email": "Email",
@@ -101,5 +114,26 @@
     },
     "common": {
       "scrollTop": "Scroll to top"
+    },
+    "gallery": {
+      "subtitle": "Signal gallery",
+      "title": "Two sites. One switch.",
+      "description": "Each portrait carries its own palette. Switch the signal and the whole interface re-tunes itself — color, light and motion follow the photograph.",
+      "expand": "Expand portrait",
+      "close": "Close",
+      "next": "Next portrait",
+      "previous": "Previous portrait",
+      "shiftTheme": "Shift signal",
+      "kicker": "Portrait / 0{{index}}",
+      "items": {
+        "studio": {
+          "title": "Studio Signal",
+          "meta": "Studio light · 4:5 crop"
+        },
+        "cold": {
+          "title": "Cold Cyberpunk",
+          "meta": "Low-key light · teal shadow"
+        }
+      }
     }
   }

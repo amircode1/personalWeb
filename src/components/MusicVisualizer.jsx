@@ -6,6 +6,7 @@ const MusicVisualizer = ({
   onAmplitudeChange,
   fillParent = false,
   accentColor = '#22d3ee',
+  secondaryColor = '#8b5cf6',
   playLabel = 'Play audio',
   pauseLabel = 'Pause audio',
 }) => {
@@ -17,6 +18,7 @@ const MusicVisualizer = ({
   const sourceRef = useRef(null);
   const frameRef = useRef(null);
   const lastReportRef = useRef(0);
+  const colorsRef = useRef({ accent: accentColor, secondary: secondaryColor });
 
   const initializeAudio = () => {
     if (audioContextRef.current || !audioRef.current || typeof window === 'undefined') return;
@@ -56,6 +58,10 @@ const MusicVisualizer = ({
       console.warn('Playback failed to start:', error);
     }
   };
+
+  useEffect(() => {
+    colorsRef.current = { accent: accentColor, secondary: secondaryColor };
+  }, [accentColor, secondaryColor]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -105,11 +111,12 @@ const MusicVisualizer = ({
         const x = index * (barWidth + gap);
         const y = height / 2 - barHeight / 2;
         const gradient = context.createLinearGradient(0, y, 0, y + barHeight);
-        gradient.addColorStop(0, accentColor);
-        gradient.addColorStop(1, '#8b5cf6');
+        const { accent: liveAccent, secondary: liveSecondary } = colorsRef.current;
+        gradient.addColorStop(0, liveAccent);
+        gradient.addColorStop(1, liveSecondary);
         context.fillStyle = gradient;
         context.globalAlpha = isPlaying ? 0.88 : 0.35;
-        context.shadowColor = accentColor;
+        context.shadowColor = liveAccent;
         context.shadowBlur = isPlaying ? 12 : 5;
         context.beginPath();
         context.roundRect(x, y, barWidth, barHeight, 3);
@@ -131,7 +138,7 @@ const MusicVisualizer = ({
       observer.disconnect();
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
-  }, [accentColor, isPlaying, onAmplitudeChange]);
+  }, [isPlaying, onAmplitudeChange]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -169,6 +176,7 @@ MusicVisualizer.propTypes = {
   onAmplitudeChange: PropTypes.func,
   fillParent: PropTypes.bool,
   accentColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
   playLabel: PropTypes.string,
   pauseLabel: PropTypes.string,
 };

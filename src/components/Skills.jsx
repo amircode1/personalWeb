@@ -36,6 +36,10 @@ const Skills = () => {
           <div className={isRTL ? 'text-right' : 'text-left'}>
             <div className="section-kicker mb-5">{t('skills.subtitle')}</div>
             <h2 className="section-title max-w-2xl">{t('skills.title')}</h2>
+            <div className="hud-tag mt-4">
+              <span className="hud-tag__index">02</span>
+              <span>{t('skills.hudTag')}</span>
+            </div>
           </div>
           <p className={`section-copy max-w-md ${isRTL ? 'text-right' : 'text-left'}`}>{t('skills.description')}</p>
         </motion.div>
