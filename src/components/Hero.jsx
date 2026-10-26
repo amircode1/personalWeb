@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 
 import Gallery from './gallery/Gallery';
+import BloomMarquee from './effects/BloomMarquee';
 import BootLog from './effects/BootLog';
 import GlitchText from './effects/GlitchText';
 import studioPortrait from '../assets/profile.jpg';
@@ -155,6 +156,8 @@ const Hero = () => {
             <Gallery items={galleryItems} labels={galleryLabels} />
           </motion.div>
         </div>
+
+        <BloomMarquee />
 
         <motion.a
           href="#about"

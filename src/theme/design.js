@@ -42,6 +42,43 @@ export const DESIGNS = {
   },
 
   /**
+   * Maximal Bloom — more is more.
+   * Oversized radii, a serif display voice, saturated layered gradients,
+   * heavy grain + vignette texture and warm ornament. Built for the studio
+   * portrait: a maximalist editorial bloom over the cold photographic base.
+   */
+  maximal: {
+    id: 'maximal',
+    radius: '1.75rem',
+    radiusSmall: '1.1rem',
+    radiusLarge: '2.25rem',
+    displayFont: "'Playfair Display', 'Vazirmatn', serif",
+    // Body stays a clean grotesk so abundance never turns into noise-only.
+    bodyFont: "'Space Grotesk', 'Inter', 'Vazirmatn', sans-serif",
+    bodyFontRtl: "'Vazirmatn', 'Space Grotesk', sans-serif",
+    monoFont: "'Space Grotesk', monospace",
+    labelFont: "'Space Grotesk', 'Vazirmatn', sans-serif",
+    labelFontRtl: "'Vazirmatn', sans-serif",
+    letterSpacing: '0.05em',
+    labelTransform: 'uppercase',
+    labelWeight: '800',
+    gridOpacity: '0.9',
+    gridSize: '64px',
+    scanOpacity: '0.07',
+    grainOpacity: '0.085',
+    vignetteOpacity: '0.4',
+    glitchAmount: '0.25',
+    borderStyle: 'double',
+    panelShadow:
+      '0 34px 90px rgba(0, 0, 0, 0.4), 0 8px 32px rgb(var(--magenta) / 0.1), inset 0 1px rgba(255, 255, 255, 0.06)',
+    backdropBlur: '26px',
+    accentGlow: '0 14px 46px rgb(var(--accent) / 0.2), 0 4px 18px rgb(var(--magenta) / 0.14)',
+    caret: 'block',
+    cursor: 'default',
+    chrome: true,
+  },
+
+  /**
    * Cold Cyberpunk — a compromised terminal.
    * Hard 0px geometry, monospace everything, CRT curvature, RGB-split glitch,
    * character rain, a DOS title bar and an unreadable boot log.

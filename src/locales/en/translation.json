@@ -28,6 +28,7 @@
       "imageLabel": "Profile signal",
       "stack": "Preferred stack",
       "scroll": "Explore the signal",
+      "marquee": "More is more — Maximal Bloom — Frontend, with feeling —",
       "bootLabel": "System boot log",
       "boot": {
         "mount": "> mounting /dev/signal0 .................. [ OK ]",
@@ -127,7 +128,7 @@
       "kicker": "Portrait / 0{{index}}",
       "items": {
         "studio": {
-          "title": "Studio Signal",
+          "title": "Maximal Bloom",
           "meta": "Studio light · 4:5 crop"
         },
         "cold": {
